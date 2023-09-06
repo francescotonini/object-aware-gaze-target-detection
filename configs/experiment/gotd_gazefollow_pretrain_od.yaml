@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - override /criterion: gotd_no_gaze.yaml
+
+tags: ["gotd", "gazefollow", "pretrain_od"]
+
+matcher:
+  cost_gaze_watch_outside_coeff: 0
+  cost_gaze_heatmap_coeff: 0

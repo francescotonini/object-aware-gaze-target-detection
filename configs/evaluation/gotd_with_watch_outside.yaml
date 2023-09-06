@@ -1,0 +1,16 @@
+_target_: src.criteria.GOTDEvaluation.GOTDEvaluation
+
+matcher: ${matcher}
+
+evals:
+  gaze_avg_distance:
+    _target_: src.criteria.evals.GazePointAvgDistance.GazePointAvgDistance
+    gaze_heatmap_size: ${datamodule.gaze_heatmap_size}
+  gaze_min_distance:
+    _target_: src.criteria.evals.GazePointMinDistance.GazePointMinDistance
+    gaze_heatmap_size: ${datamodule.gaze_heatmap_size}
+  gaze_heatmap_auc:
+    _target_: src.criteria.evals.GazeHeatmapAUC.GazeHeatmapAUC
+    gaze_heatmap_size: ${datamodule.gaze_heatmap_size}
+  gaze_watch_outside_ap:
+    _target_: src.criteria.evals.GazeWatchOutsideAP.GazeWatchOutsideAP

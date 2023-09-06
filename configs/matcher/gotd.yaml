@@ -1,0 +1,9 @@
+_target_: src.matchers.GOTDHungarianMatcher.GOTDHungarianMatcher
+
+loss_bbox_coeff: 1
+loss_giou_coeff: 2.5
+
+cost_class_coeff: 1
+cost_bbox_coeff: 2
+cost_gaze_watch_outside_coeff: 0
+cost_gaze_heatmap_coeff: 2

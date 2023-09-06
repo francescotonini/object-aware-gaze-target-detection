@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - override /criterion: gotd_with_watch_outside.yaml
+  - override /evaluation: gotd_with_watch_outside.yaml
+
+tags: ["gotd", "gazefollow", "2d", "watch_outside"]
+
+matcher:
+  cost_gaze_watch_outside_coeff: 1

@@ -1,0 +1,26 @@
+_target_: src.criteria.GOTDSetCriterion.GOTDSetCriterion
+
+matcher: ${matcher}
+
+losses:
+  loss_bbox:
+    _target_: src.criteria.losses.BoxesLoss.BoxesLoss
+    loss_l1_weight: 1
+    loss_giou_weight: 2.5
+    loss_weight: 2
+  loss_label:
+    _target_: src.criteria.losses.LabelLoss.LabelLoss
+    num_classes: ${model.net.num_classes}
+    eos_coeff: 0.1
+    loss_weight: 1
+  loss_gaze_vector:
+    _target_: src.criteria.losses.GazeVectorLoss.GazeVectorLoss
+    gaze_vector_type: ${datamodule.gaze_vector_type}
+    loss_weight: 1
+  loss_gaze_heatmap:
+    _target_: src.criteria.losses.GazeHeatmapLoss.GazeHeatmapLoss
+    loss_weight: 2
+    gaze_heatmap_size: ${datamodule.gaze_heatmap_size}
+  loss_gaze_watch_outside:
+    _target_: src.criteria.losses.GazeWatchOutsideLoss.GazeWatchOutsideLoss
+    loss_weight: 1

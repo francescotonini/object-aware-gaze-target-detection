@@ -1,0 +1,15 @@
+# https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.callbacks.ModelCheckpoint.html
+
+# Save the model periodically by monitoring a quantity.
+# Look at the above link for more detailed information.
+model_checkpoint:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  dirpath: ${paths.output_dir}/checkpoints
+  filename: "epoch_{epoch:03d}_auc_{val/gaze_heatmap_auc:.3f}"
+  monitor: "val/gaze_heatmap_auc"
+  verbose: False
+  save_last: True
+  save_top_k: 5
+  mode: "max"
+  auto_insert_metric_name: False
+  save_weights_only: False

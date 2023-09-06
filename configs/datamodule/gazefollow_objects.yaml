@@ -1,0 +1,16 @@
+_target_: src.datamodules.gazefollow_objects_datamodule.GazeFollowObjectsDataModule
+data_dir: "${paths.data_dir}/gazefollow_extended"
+batch_size: 4
+num_workers: 8
+pin_memory: False
+persistent_workers: True
+
+num_classes: 81
+num_queries: ${model.net.num_queries}
+gaze_heatmap_size: 64  # 64x64 heatmap
+gaze_heatmap_default_value: 1.0
+use_aux_faces_dataset: True
+use_gaze_inside_only: False
+gaze_vector_type: "2d"
+min_object_score: 0.5
+min_aux_faces_score: 0.9

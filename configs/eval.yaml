@@ -1,0 +1,29 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - datamodule: gazefollow_objects.yaml
+  - model: gotd.yaml
+  - criterion: gotd.yaml
+  - evaluation: gotd.yaml
+  - matcher: gotd.yaml
+  - callbacks: default.yaml
+  - logger: null # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+  - experiment: null
+
+  # optional local config for machine/user specific settings
+  # it's optional since it doesn't need to exist and is excluded from version control
+  - optional local: default.yaml
+
+task_name: "eval"
+
+tags: ["dev"]
+
+# passing checkpoint path is necessary for evaluation
+#ckpt_path: ???
+ckpt_path: null

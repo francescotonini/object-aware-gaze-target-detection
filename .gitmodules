@@ -1,0 +1,3 @@
+[submodule "libs/detr"]
+	path = libs/detr
+	url = https://github.com/facebookresearch/detr.git

@@ -1,0 +1,14 @@
+# @package _global_
+
+defaults:
+  - override /datamodule: videoattentiontarget_objects.yaml
+  - override /criterion: gotd_with_watch_outside.yaml
+  - override /evaluation: gotd_with_watch_outside.yaml
+
+tags: ["gotd", "videoattentiontarget", "3d"]
+
+datamodule:
+  gaze_vector_type: "3d"
+
+matcher:
+  cost_gaze_watch_outside_coeff: 1

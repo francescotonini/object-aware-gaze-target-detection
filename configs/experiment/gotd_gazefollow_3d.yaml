@@ -1,0 +1,6 @@
+# @package _global_
+
+tags: ["gotd", "gazefollow", "3d"]
+
+datamodule:
+  gaze_vector_type: "3d"

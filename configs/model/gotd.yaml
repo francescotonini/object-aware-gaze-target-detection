@@ -1,0 +1,28 @@
+_target_: src.models.gotd_module.GOTDLitModule
+
+net:
+  _target_: src.models.components.GOTD.GOTD
+  num_classes: ${datamodule.num_classes}
+  num_queries: 100
+  num_gaze_queries: 20
+  gaze_heatmap_size: ${datamodule.gaze_heatmap_size}
+  num_gaze_decoder_layers: 6
+  gaze_vector_type: ${datamodule.gaze_vector_type}
+  gaze_cone_angle: 120
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: true
+  lr: 1e-4
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.StepLR
+  _partial_: true
+  step_size: 80
+
+criterion: ${criterion}
+evaluation: ${evaluation}
+n_of_images_to_log: ${datamodule.batch_size}
+gaze_vector_type: ${datamodule.gaze_vector_type}
+# Add here the path to the pretrained od model
+net_pretraining:
