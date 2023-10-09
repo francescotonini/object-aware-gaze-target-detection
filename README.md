@@ -103,11 +103,11 @@ This code is based on [PyTorch Lightning](https://www.lightning.ai/), [Hydra](ht
 
 ## Cite us
 ```
-@InProceedings{tonini2023object,
+@inproceedings{tonini2023objectaware,
   title={Object-aware Gaze Target Detection},
   author={Tonini, Francesco and Dall'Asen, Nicola and Beyan, Cigdem and Ricci, Elisa},
-  booktitle={The IEEE International Conference on Computer Vision (ICCV)},
-  month={Oct},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={21860--21869},
   year={2023}
 }
 ```
