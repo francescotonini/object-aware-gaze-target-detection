@@ -14,9 +14,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_dir", help="Root directory of dataset")
     parser.add_argument(
-        "--subset",
-        help="Subset of dataset to process",
-        choices=["train", "test"],
+        "--subset", help="Subset of dataset to process", choices=["train", "test"], required=True
     )
     args = parser.parse_args()
 
@@ -61,7 +59,5 @@ if __name__ == "__main__":
             )
 
     # Write csv
-    df = pd.DataFrame(
-        csv, columns=["path", "score", "x_min", "y_min", "x_max", "y_max"]
-    )
+    df = pd.DataFrame(csv, columns=["path", "score", "x_min", "y_min", "x_max", "y_max"])
     df.to_csv(os.path.join(args.dataset_dir, f"{args.subset}_head.csv"), index=False)

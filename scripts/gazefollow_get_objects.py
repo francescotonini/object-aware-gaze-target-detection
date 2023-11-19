@@ -13,13 +13,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_dir", help="Root directory of dataset")
     parser.add_argument(
-        "--subset",
-        help="Subset of dataset to process",
-        choices=["train", "test"],
+        "--subset", help="Subset of dataset to process", choices=["train", "test"], required=True
     )
     args = parser.parse_args()
 
-    labels_path = f"{args.subset if args.subset == 'train' else 'test2'}.csv"
+    labels_path = f"{args.subset}_annotations_release.txt"
 
     column_names = [
         "path",
@@ -54,7 +52,7 @@ if __name__ == "__main__":
     for path in tqdm.tqdm(paths):
         folder = Path(os.path.dirname(path).split("/")[-1])
 
-        results = model(os.path.join(args.dataset_dir, path))
+        results = model(os.path.join(args.dataset_dir, path), verbose=False)
         for result in results:
             boxes = result.boxes.xyxyn
             confs = result.boxes.conf
@@ -74,7 +72,5 @@ if __name__ == "__main__":
                 )
 
     # Write csv to DATASET_ROOT_DIR
-    df = pd.DataFrame(
-        csv, columns=["path", "conf", "class", "x_min", "y_min", "x_max", "y_max"]
-    )
+    df = pd.DataFrame(csv, columns=["path", "conf", "class", "x_min", "y_min", "x_max", "y_max"])
     df.to_csv(os.path.join(args.dataset_dir, f"{args.subset}_objects.csv"), index=False)

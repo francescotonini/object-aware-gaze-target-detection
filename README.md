@@ -51,7 +51,7 @@ paths:
 EOT
 ```
 
-The implementation requires both object and faces annotations.
+The implementation requires both object and faces annotations as well as depth maps from MiDaS.
 Therefore, you need run the following script to extract face and object annotations.
 
 ```bash
@@ -60,12 +60,14 @@ python scripts/gazefollow_get_aux_faces.py --dataset_path /path/to/gazefollow --
 python scripts/gazefollow_get_aux_faces.py --dataset_path /path/to/gazefollow --subset test
 python scripts/gazefollow_get_objects.py --dataset_path /path/to/gazefollow --subset train
 python scripts/gazefollow_get_objects.py --dataset_path /path/to/gazefollow --subset test
+python scripts/gazefollow_get_depth.py --dataset_path /path/to/gazefollow
 
 # VideoAttentionTarget
 python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset train
 python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset test
 python scripts/videoattentiontarget_get_objects.py --dataset_path /path/to/videoattentiontarget --subset train
 python scripts/videoattentiontarget_get_objects.py --dataset_path /path/to/videoattentiontarget --subset test
+python scripts/videoattentiontarget_get_depth.py --dataset_path /path/to/videoattentiontarget
 ```
 
 ## Training

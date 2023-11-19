@@ -39,7 +39,7 @@ if __name__ == "__main__":
     for path in tqdm.tqdm(paths):
         folder = Path(os.path.dirname(path).split("/")[-1])
 
-        results = model(os.path.join(args.dataset_dir, "images", path))
+        results = model(os.path.join(args.dataset_dir, "images", path), verbose=False)
         for result in results:
             boxes = result.boxes.xyxyn
             confs = result.boxes.conf
@@ -59,7 +59,5 @@ if __name__ == "__main__":
                 )
 
     # Write csv to DATASET_ROOT_DIR
-    df = pd.DataFrame(
-        csv, columns=["path", "conf", "class", "x_min", "y_min", "x_max", "y_max"]
-    )
+    df = pd.DataFrame(csv, columns=["path", "conf", "class", "x_min", "y_min", "x_max", "y_max"])
     df.to_csv(os.path.join(args.dataset_dir, f"{args.subset}_objects.csv"), index=False)

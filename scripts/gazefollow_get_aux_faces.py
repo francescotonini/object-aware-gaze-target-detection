@@ -17,10 +17,11 @@ if __name__ == "__main__":
         "--subset",
         help="Subset of dataset to process",
         choices=["train", "test"],
+        required=True,
     )
     args = parser.parse_args()
 
-    labels_path = f"{args.subset if args.subset == 'train' else 'test2'}.csv"
+    labels_path = f"{args.subset}_annotations_release.txt"
 
     column_names = [
         "path",
@@ -49,14 +50,12 @@ if __name__ == "__main__":
 
     model = get_model("resnet50_2020-07-20", max_size=2048, device="cuda")
     model.eval()
-
     paths = list(df.groups.keys())
 
     csv = []
     for path in tqdm.tqdm(paths):
         folder = Path(os.path.dirname(path).split("/")[-1])
-
-        img = cv2.imread(os.path.join(args.dataset_dir, "images", path))
+        img = cv2.imread(os.path.join(args.dataset_dir, path))
 
         annotations = model.predict_jsons(img)
 
@@ -76,7 +75,5 @@ if __name__ == "__main__":
             )
 
     # Write csv
-    df = pd.DataFrame(
-        csv, columns=["path", "score", "x_min", "y_min", "x_max", "y_max"]
-    )
+    df = pd.DataFrame(csv, columns=["path", "score", "x_min", "y_min", "x_max", "y_max"])
     df.to_csv(os.path.join(args.dataset_dir, f"{args.subset}_head.csv"), index=False)
