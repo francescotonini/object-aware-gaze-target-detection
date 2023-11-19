@@ -1,7 +1,7 @@
 # Object-aware Gaze Target Detection
 [![arXiv](https://img.shields.io/badge/arXiv-2307.09662-00ff00.svg)](https://arxiv.org/abs/2307.09662)
 
-Official repo of the paper "Object-aware Gaze Target Detection" (ICCV 2023).
+Official repo of the paper ["Object-aware Gaze Target Detection"](https://openaccess.thecvf.com/content/ICCV2023/html/Tonini_Object-aware_Gaze_Target_Detection_ICCV_2023_paper.html) (ICCV 2023).
 
 ![Method](./assets/method.png)
 
@@ -16,7 +16,7 @@ We provide configurations to train the model on GazeFollow and VideoAttentionTar
 ## Prerequisites
 ### Environment and dependencies
 We provide a pip requirements file to install all the dependencies.
-We recommend to use a conda environment to install the dependencies.
+We recommend using a conda environment to install the dependencies.
 
 ```bash
 # Clone project and submodules
@@ -51,8 +51,8 @@ paths:
 EOT
 ```
 
-The implementation requires both object and faces annotations as well as depth maps from MiDaS.
-Therefore, you need run the following script to extract face and object annotations.
+The implementation requires both object and face annotations and depth maps from MiDaS.
+Therefore, you need to run the following script to extract face and object annotations.
 
 ```bash
 # GazeFollow
@@ -90,7 +90,7 @@ python src/train.py experiment=gotd_videoattentiontarget model.net_pretraining={
 ```
 
 ## Evaluation
-The configuration files are useful also when evaluating the model.
+The configuration files are also useful when evaluating the model.
 
 ```bash
 # GazeFollow
@@ -99,6 +99,9 @@ python src/eval.py experiment=gotd_gazefollow ckpt_path={PATH TO CHECKPOINT}
 # VideoAttentionTarget
 python src/eval.py experiment=gotd_videoattentiontarget ckpt_path={PATH TO CHECKPOINT}
 ```
+
+### Checkpoints
+We provide checkpoints for [GazeFollow](https://mega.nz/file/tZZynIZZ#0M_3bitgdvH_MY1m2F9wD2NdY2FE4Poc5-63MRdt84E) and [VideoAttentionTarget](https://mega.nz/file/EI50DSoT#30pTdNe3hBo69jOsIt-oS6q_U8CV9MQ86ZKYDtOO0_Y).
 
 ## Acknowledgements
 This code is based on [PyTorch Lightning](https://www.lightning.ai/), [Hydra](https://hydra.cc/), and the official DETR implementation.
