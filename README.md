@@ -63,6 +63,8 @@ python scripts/gazefollow_get_objects.py --dataset_path /path/to/gazefollow --su
 python scripts/gazefollow_get_depth.py --dataset_path /path/to/gazefollow
 
 # VideoAttentionTarget
+cp data/videoattentiontarget_extended/*.csv /path/to/videoattentiontarget
+
 python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset train
 python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset test
 python scripts/videoattentiontarget_get_objects.py --dataset_path /path/to/videoattentiontarget --subset train
