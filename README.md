@@ -56,20 +56,20 @@ Therefore, you need to run the following script to extract face and object annot
 
 ```bash
 # GazeFollow
-python scripts/gazefollow_get_aux_faces.py --dataset_path /path/to/gazefollow --subset train
-python scripts/gazefollow_get_aux_faces.py --dataset_path /path/to/gazefollow --subset test
-python scripts/gazefollow_get_objects.py --dataset_path /path/to/gazefollow --subset train
-python scripts/gazefollow_get_objects.py --dataset_path /path/to/gazefollow --subset test
-python scripts/gazefollow_get_depth.py --dataset_path /path/to/gazefollow
+python scripts/gazefollow_get_aux_faces.py --dataset_dir /path/to/gazefollow --subset train
+python scripts/gazefollow_get_aux_faces.py --dataset_dir /path/to/gazefollow --subset test
+python scripts/gazefollow_get_objects.py --dataset_dir /path/to/gazefollow --subset train
+python scripts/gazefollow_get_objects.py --dataset_dir /path/to/gazefollow --subset test
+python scripts/gazefollow_get_depth.py --dataset_dir /path/to/gazefollow
 
 # VideoAttentionTarget
 cp data/videoattentiontarget_extended/*.csv /path/to/videoattentiontarget
 
-python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset train
-python scripts/videoattentiontarget_get_aux_faces.py --dataset_path /path/to/videoattentiontarget --subset test
-python scripts/videoattentiontarget_get_objects.py --dataset_path /path/to/videoattentiontarget --subset train
-python scripts/videoattentiontarget_get_objects.py --dataset_path /path/to/videoattentiontarget --subset test
-python scripts/videoattentiontarget_get_depth.py --dataset_path /path/to/videoattentiontarget
+python scripts/videoattentiontarget_get_aux_faces.py --dataset_dir /path/to/videoattentiontarget --subset train
+python scripts/videoattentiontarget_get_aux_faces.py --dataset_dir /path/to/videoattentiontarget --subset test
+python scripts/videoattentiontarget_get_objects.py --dataset_dir /path/to/videoattentiontarget --subset train
+python scripts/videoattentiontarget_get_objects.py --dataset_dir /path/to/videoattentiontarget --subset test
+python scripts/videoattentiontarget_get_depth.py --dataset_dir /path/to/videoattentiontarget
 ```
 
 ## Training
@@ -104,6 +104,7 @@ python src/eval.py experiment=gotd_videoattentiontarget ckpt_path={PATH TO CHECK
 
 ### Checkpoints
 We provide checkpoints for [GazeFollow](https://mega.nz/file/tZZynIZZ#0M_3bitgdvH_MY1m2F9wD2NdY2FE4Poc5-63MRdt84E) and [VideoAttentionTarget](https://mega.nz/file/EI50DSoT#30pTdNe3hBo69jOsIt-oS6q_U8CV9MQ86ZKYDtOO0_Y).
+NOTE: when evaluating on the checkpoints above, replace `ckpt_path={PATH_TO_CHECKPOINT}` with `+model.net_pretraining={PATH_TO_CHECKPOINT}`.
 
 ## Acknowledgements
 This code is based on [PyTorch Lightning](https://www.lightning.ai/), [Hydra](https://hydra.cc/), and the official DETR implementation.
